@@ -21,3 +21,8 @@ resource "aws_eip" "ip" {
 output "ip" {
   value = aws_eip.ip.public_ip
 }
+
+// alb output powinien zwrócić adres na który można wejść, żeby uruchomić
+
+// to samo rds, ale z komendą połączeniową do bazy
+// parameter store w ssm, skonfigurować terraforma, żęby z niego korzystał
