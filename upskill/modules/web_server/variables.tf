@@ -1,6 +1,11 @@
-variable "prefix" {
-  description = "Name prefix to make resources unique"
-  type = string
+variable "zones" {
+  description = "Configurations of each availability zone"
+  type = list(object({
+    zone = string,
+    alb_subnet_cidr = string,
+    web_subnet_cidr = string,
+    db_subnet_cidr = string
+  }))
 }
 
 variable "instance_type" {
@@ -9,7 +14,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "ami" {
+variable "web_ami" {
   description = "AMI identifier of the image to be run on EC2"
   type = string
   default = "ami-0c55b159cbfafe1f0"
@@ -26,9 +31,9 @@ variable "vpc_id" {
   type = string
 }
 
-variable "subnet_id" {
-  description = "Subnet identifier for load balancer target group"
-  type = string
+variable "subnet_ids" {
+  description = "Subnet identifiers for load balancer target group in each zone"
+  type = list(string)
 }
 
 variable "security_group_id" {
