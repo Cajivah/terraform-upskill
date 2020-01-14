@@ -1,4 +1,5 @@
 resource "aws_instance" "web" {
+  count = length(var.zones)
   ami = var.web_ami
   instance_type = var.instance_type
   security_groups = [var.security_group_id]
@@ -9,6 +10,6 @@ resource "aws_instance" "web" {
   }
 
   tags {
-    Name = "${var.prefix}_web"
+    Name = "${var.zones[count.index].zone}_web"
   }
 }
