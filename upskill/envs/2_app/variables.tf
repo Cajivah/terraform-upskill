@@ -23,12 +23,12 @@ variable "zones" {
   }))
 }
 
-variable "min_size" {
+variable "min_web_scaling" {
   description = "The minimal number of intances to keep alive"
   type = number
 }
 
-variable "max_size" {
+variable "max_web_scaling" {
   description = "The maximal number of intances to keep alive"
   type = number
 }

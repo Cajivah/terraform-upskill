@@ -5,8 +5,8 @@ module "web_server" {
   subnet_ids = local.network_state_web_subnet_ids
   vpc_id = local.network_state_vpc_id
 
-  max_size = var.max_size
-  min_size = var.min_size
+  max_size = var.max_web_scaling
+  min_size = var.min_web_scaling
 }
 
 module "db" {
