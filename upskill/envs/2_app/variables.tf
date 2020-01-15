@@ -22,3 +22,13 @@ variable "zones" {
     db_subnet_cidr = string
   }))
 }
+
+variable "min_size" {
+  description = "The minimal number of intances to keep alive"
+  type = number
+}
+
+variable "max_size" {
+  description = "The maximal number of intances to keep alive"
+  type = number
+}

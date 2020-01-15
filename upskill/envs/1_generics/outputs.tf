@@ -18,3 +18,13 @@ output "db_subnet_ids" {
   value       = [for x in aws_subnet.db_private_subnet : x.id]
   description = "List of security groups' ids prepared for databases"
 }
+
+output "alb_sg_ids" {
+  value       = [for x in aws_security_group.alb_sg : x.id]
+  description = "List of security groups' ids prepared for alb"
+}
+
+output "alb_subnet_ids" {
+  value       = [for x in aws_subnet.alb_public_subnet : x.id]
+  description = "List of security groups' ids prepared for alb"
+}

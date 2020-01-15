@@ -8,15 +8,15 @@ variable "zones" {
   }))
 }
 
-variable "min_size" {
-  description = "The minimal number of intances to keep alive"
-  type = number
-}
+  variable "min_size" {
+    description = "The minimal number of intances to keep alive"
+    type = number
+  }
 
-variable "max_size" {
-  description = "The maximal number of intances to keep alive"
-  type = number
-}
+  variable "max_size" {
+    description = "The maximal number of intances to keep alive"
+    type = number
+  }
 
 variable "instance_type" {
   description = "EC2 instance type"
