@@ -1,4 +1,4 @@
 output "ec2_address" {
-  value       = aws_instance.web.private_ip
-  description = "Private ip of ec2"
+  value       = aws_autoscaling_group.web_asg.id
+  description = "Ids of autoscaling groups"
 }
