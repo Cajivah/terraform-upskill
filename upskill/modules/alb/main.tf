@@ -1,11 +1,8 @@
 resource "aws_lb" "alb" {
-  count = length(var.zones)
   name = local.cluster_name
   load_balancer_type = "application"
-  subnets = [
-    var.subnet_ids[count.index]]
-  security_groups = [
-    var.sg_ids[count.index]]
+  subnets = var.subnet_ids
+  security_groups = var.sg_ids
 }
 
 resource "aws_lb_listener" "https" {

@@ -24,3 +24,6 @@ region = "eu-west-1"
 
 min_web_scaling = 1
 max_web_scaling = 6
+
+domain_name = "jmalyjasiak.pgssandbox.com"
+

@@ -35,3 +35,4 @@ variable "domain_name" {
   description = "Domain name for the environment. SHOULD BE MATCHING ALREADY EXISTING DOMAIN!"
   type = string
 }
+
