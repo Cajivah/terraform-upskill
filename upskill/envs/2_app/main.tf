@@ -15,6 +15,9 @@ module "web_server" {
 
   max_size = var.max_web_scaling
   min_size = var.min_web_scaling
+
+  https_listener_arn= module.alb.https_listener_arn
+  env = var.env
 }
 
 module "db" {

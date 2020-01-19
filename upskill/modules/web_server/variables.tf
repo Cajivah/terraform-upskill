@@ -50,3 +50,13 @@ variable "security_group_id" {
   description = "Security group identifier for load balancer target group"
   type = string
 }
+
+variable "https_listener_arn" {
+  description = "HTTPS listener arn"
+  type = string
+}
+
+variable "env" {
+  description = "Current environment"
+  type = string
+}

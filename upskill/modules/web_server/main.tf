@@ -13,10 +13,9 @@ resource "aws_launch_configuration" "web" {
 
 resource "aws_autoscaling_group" "web_asg" {
   launch_configuration = aws_launch_configuration.web.name
-  vpc_zone_identifier = [
-    var.subnet_ids[count.index]]
+  vpc_zone_identifier = var.subnet_ids
   target_group_arns = [
-    aws_lb_target_group.web_asg_tg.arn]
+    module.alb-tg.alb-tg-arn]
   health_check_type = "ELB"
 
   min_size = var.min_size
@@ -29,19 +28,11 @@ resource "aws_autoscaling_group" "web_asg" {
   }
 }
 
-resource "aws_lb_target_group" "web_asg_tg" {
+module "alb-tg" {
+  source = "../alb_tg"
+  env = var.env
+  health_check_path = "/"
+  https_listener_arn = var.https_listener_arn
   name = local.cluster_name
-  port = var.server_port
-  protocol = local.https_protocol
   vpc_id = var.vpc_id
-
-  health_check {
-    path = "/"
-    protocol = local.https_protocol
-    matcher = "200"
-    interval = 15
-    timeout = 3
-    healthy_threshold = 2
-    unhealthy_threshold = 2
-  }
 }
