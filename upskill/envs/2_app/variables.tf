@@ -42,3 +42,8 @@ variable "env" {
   description = "Environment name"
   type = string
 }
+
+variable "ssl_cert_arn" {
+  description = "ARN of a certificate to use in alb config"
+  type = string
+}

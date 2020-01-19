@@ -1,40 +1,46 @@
 resource "aws_lb" "alb" {
-  name = local.cluster_name
+  name = local.lb_name
   load_balancer_type = "application"
   subnets = var.subnet_ids
   security_groups = var.sg_ids
 }
 
-resource "aws_lb_listener" "https" {
+resource "aws_lb_target_group" "default-tg" {
+  name      = local.default_tg_name
+  port      = local.https_port
+  protocol  = local.https_protocol
+  vpc_id    = var.vpc_id
+}
+
+resource "aws_lb_listener" "redirect_http_to_https" {
   load_balancer_arn = aws_lb.alb.arn
+  port              = local.http_port
+  protocol          = local.http_protocol
 
-  port = local.https_port
-  protocol = local.https_protocol
-
-  # By default, return a simple 404 page
   default_action {
-    type = "fixed-response"
+    type = "redirect"
 
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "404: page not found"
-      status_code = 404
+    redirect {
+      port        = local.https_port
+      protocol    = local.https_protocol
+      status_code = local.http_redirect
     }
   }
 }
 
-resource "aws_lb_listener_rule" "asg" {
-  listener_arn = aws_lb_listener.https.arn
-  priority = 100
+resource "aws_lb_listener" "lb-listener-https" {
+  depends_on = [
+    "aws_lb_target_group.default-tg"
+  ]
 
-  condition {
-    field = "path-pattern"
-    values = [
-      "*"]
+  default_action {
+    target_group_arn  = aws_lb_target_group.default-tg.arn
+    type              = "forward"
   }
 
-  action {
-    type = "forward"
-    target_group_arn = var.asg_target_group_ids
-  }
+  load_balancer_arn = aws_lb.alb.arn
+  port              = local.https_port
+  protocol          = local.https_protocol
+  certificate_arn   = var.ssl_cert_arn
+  ssl_policy = local.tls_1_2
 }

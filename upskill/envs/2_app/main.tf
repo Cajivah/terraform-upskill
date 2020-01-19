@@ -32,4 +32,8 @@ module "alb" {
   subnet_ids = local.network_state_alb_subnet_ids
   sg_ids = local.network_state_alb_sg_ids
   asg_target_group_ids = module.web_server.asg_tg_ids
+  env = var.env
+  name = "main"
+  vpc_id = local.network_state_vpc_id
+  ssl_cert_arn = var.ssl_cert_arn
 }

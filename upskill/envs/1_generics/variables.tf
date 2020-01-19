@@ -27,6 +27,5 @@ variable "zones" {
 variable "allowed_external_ips" {
   description = "IPs allowed to access the system"
   type = string
-  default = [
-    "0.0.0.0/0"]
+  default = []
 }
