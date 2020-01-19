@@ -1,3 +1,11 @@
+module r53 {
+  source = "../../modules/r53"
+  domain_name = var.domain_name
+  subdomain_name = "${local.app_name}-${var.env}"
+  lb_dns_name = module.alb.alb_dns_name
+  lb_zone_id = module.alb.alb_zone_id
+}
+
 module "web_server" {
   source = "../../modules/web_server"
   zones = var.zones

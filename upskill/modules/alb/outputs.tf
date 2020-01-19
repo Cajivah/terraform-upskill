@@ -1,9 +1,14 @@
 output "alb_dns_name" {
-  value = [for x in aws_lb.alb : x.dns_name]
-  description = "The domain names of the load balancers"
+  value = aws_lb.alb.dns_name
+  description = "The domain name of the load balancer"
+}
+
+output "alb_zone_id" {
+  value = aws_lb.alb.zone_id
+  description = "Zone id of the load balancer"
 }
 
 output "alb_id" {
-  value = [for x in aws_lb.alb : x.id]
-  description = "The ids of the load balancers"
+  value = aws_lb.alb.id
+  description = "The id of the load balancer"
 }

@@ -30,9 +30,3 @@ variable "allowed_external_ips" {
   default = [
     "0.0.0.0/0"]
 }
-
-variable "domain_name" {
-  description = "Domain name for the environment. SHOULD BE MATCHING ALREADY EXISTING DOMAIN!"
-  type = string
-}
-

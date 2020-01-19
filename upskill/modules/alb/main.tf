@@ -6,8 +6,7 @@ resource "aws_lb" "alb" {
 }
 
 resource "aws_lb_listener" "https" {
-  count = length(aws_lb)
-  load_balancer_arn = aws_lb.alb[count.index].arn
+  load_balancer_arn = aws_lb.alb.arn
 
   port = local.https_port
   protocol = local.https_protocol
@@ -25,8 +24,7 @@ resource "aws_lb_listener" "https" {
 }
 
 resource "aws_lb_listener_rule" "asg" {
-  count = length(aws_lb_listener.https)
-  listener_arn = aws_lb_listener.https[count.index].arn
+  listener_arn = aws_lb_listener.https.arn
   priority = 100
 
   condition {
@@ -37,6 +35,6 @@ resource "aws_lb_listener_rule" "asg" {
 
   action {
     type = "forward"
-    target_group_arn = var.asg_target_group_ids[count.index]
+    target_group_arn = var.asg_target_group_ids
   }
 }
