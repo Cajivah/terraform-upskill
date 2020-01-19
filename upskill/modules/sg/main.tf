@@ -1,18 +1,18 @@
 resource "aws_security_group" "alb_sg" {
   count = length(var.zones)
   name = "${var.zones[count.index].zone}_alb_sg"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "web_sg" {
   name = "web_sg"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "db_sg" {
   count = length(var.zones)
   name = "${var.zones[count.index].zone}_db_sg"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {
@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "allow_http_inbound" {
   from_port = local.http_port
   to_port = local.http_port
   protocol = local.tcp_protocol
-  cidr_blocks = local.all_ips
+  cidr_blocks = var.allowed_external_ips
 }
 
 resource "aws_security_group_rule" "allow_https_inbound" {
@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "allow_https_inbound" {
   from_port = local.https_port
   to_port = local.https_port
   protocol = local.tcp_protocol
-  cidr_blocks = local.all_ips
+  cidr_blocks = var.allowed_external_ips
 }
 
 resource "aws_security_group_rule" "allow_all_outbound" {

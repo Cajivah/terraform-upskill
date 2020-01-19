@@ -18,7 +18,7 @@ module "db" {
   security_group_ids = local.network_state_db_sg_ids
 }
 
-mobule "alb" {
+module "alb" {
   source = "../../modules/alb"
   zones = var.zones
   subnet_ids = local.network_state_alb_subnet_ids
