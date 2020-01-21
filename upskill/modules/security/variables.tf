@@ -5,7 +5,7 @@ variable "vpc_id" {
 
 variable "zones" {
   description = "Configuration of network set up per AZ"
-  type = list(object({
+  type        = list(object({
     zone            = string,
     alb_subnet_cidr = string,
     web_subnet_cidr = string,
@@ -15,6 +15,7 @@ variable "zones" {
 
 variable "allowed_external_ips" {
   description = "IPs allowed to access the system"
-  type = string
-  default = ["0.0.0.0/0"]
+  type        = string
+  default     = [
+    "0.0.0.0/0"]
 }

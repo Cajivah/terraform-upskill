@@ -5,9 +5,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "terraform-upskill"
-    key    = "envs/generics/terraform.tfstate"
-    region = "eu-west-1"
+    bucket  = "terraform-upskill"
+    key     = "envs/generics/terraform.tfstate"
+    region  = "eu-west-1"
     # dynamodb_table = "" # charges may apply, necessary for locking
     encrypt = true
   }

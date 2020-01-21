@@ -63,9 +63,9 @@ resource "aws_security_group_rule" "allow-web-inbound" {
   type              = "ingress"
   security_group_id = aws_security_group.db_sg[count.index].id
 
-  from_port = local.db_port
-  to_port   = local.db_port
-  protocol  = local.any_protocol
+  from_port   = local.db_port
+  to_port     = local.db_port
+  protocol    = local.any_protocol
   cidr_blocks = [
-  var.zones[count.index].web_subnet_cidr]
+    var.zones[count.index].web_subnet_cidr]
 }

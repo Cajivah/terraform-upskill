@@ -38,13 +38,13 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route" "to_internet_gateway" {
-  route_table_id = aws_route_table.public.id
+  route_table_id         = aws_route_table.public.id
   destination_cidr_block = local.any_ip
-  gateway_id = aws_internet_gateway.ig.id
+  gateway_id             = aws_internet_gateway.ig.id
 }
 
 resource "aws_route_table_association" "public" {
-  count = length(aws_subnet.alb_public_subnet)
-  subnet_id = aws_subnet.alb_public_subnet[count.index].id
+  count          = length(aws_subnet.alb_public_subnet)
+  subnet_id      = aws_subnet.alb_public_subnet[count.index].id
   route_table_id = aws_route_table.public.id
 }

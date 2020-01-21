@@ -17,3 +17,10 @@ variable "lb_zone_id" {
   type        = string
   description = "Load balancer's zone id"
 }
+
+variable "env" {
+  type        = string
+  description = "Current environment"
+}
+
+

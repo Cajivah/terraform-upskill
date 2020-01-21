@@ -5,7 +5,7 @@ variable "vpc_id" {
 
 variable "zones" {
   description = "Configuration of network set up per AZ"
-  type = list(object({
+  type        = list(object({
     zone            = string,
     alb_subnet_cidr = string,
     web_subnet_cidr = string,
@@ -14,18 +14,18 @@ variable "zones" {
 }
 
 variable "ig_name" {
-  type = string
+  type        = string
   description = "Name added as a tag to internet gateway resource"
-  default = "ig"
+  default     = "ig"
 }
 
 variable "env" {
-  type = string
+  type        = string
   description = "Current environment name"
 }
 
 
 variable "map_public_ip_on_launch" {
-  type = string
+  type        = string
   description = "TODO"
 }

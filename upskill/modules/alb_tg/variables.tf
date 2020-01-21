@@ -1,24 +1,24 @@
 variable "name" {
   description = "Load balancer's name"
-  type = string
+  type        = string
 }
 
 variable "env" {
   description = "Current environment"
-  type = string
+  type        = string
 }
 
 variable "vpc_id" {
   description = "VPC identifier"
-  type = string
+  type        = string
 }
 
 variable "https_listener_arn" {
   description = "HTTPS listener arn"
-  type = string
+  type        = string
 }
 
 variable "health_check_path" {
   description = "Path to send health check to"
-  type = string
+  type        = string
 }
