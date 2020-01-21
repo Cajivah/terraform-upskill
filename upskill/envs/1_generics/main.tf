@@ -3,15 +3,12 @@ module "vpc" {
   vpc_cidr = var.vpc_cidr
 }
 
-module "ig" {
-  source = "../../modules/ig"
-  vpc_id = module.vpc.vpc_id
-}
-
 module subnet {
-  source = "../../modules/subnet"
+  source = "../../modules/network"
   vpc_id = module.vpc.vpc_id
   zones = var.zones
+  env = var.env
+  map_public_ip_on_launch = var.map_public_ip_on_launch
 }
 
 module "security" {

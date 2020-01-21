@@ -29,3 +29,9 @@ variable "allowed_external_ips" {
   type = string
   default = []
 }
+
+variable "map_public_ip_on_launch" {
+  description = "TODO"
+  type = bool
+  default = false
+}

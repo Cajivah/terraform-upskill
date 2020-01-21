@@ -12,3 +12,20 @@ variable "zones" {
     db_subnet_cidr  = string
   }))
 }
+
+variable "ig_name" {
+  type = string
+  description = "Name added as a tag to internet gateway resource"
+  default = "ig"
+}
+
+variable "env" {
+  type = string
+  description = "Current environment name"
+}
+
+
+variable "map_public_ip_on_launch" {
+  type = string
+  description = "TODO"
+}
