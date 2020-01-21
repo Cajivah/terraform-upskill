@@ -56,6 +56,12 @@ variable "https_listener_arn" {
   type        = string
 }
 
+
+variable "instance_profile_name" {
+  description = "EC2 instance profile name"
+  type        = string
+}
+
 variable "env" {
   description = "Current environment"
   type        = string

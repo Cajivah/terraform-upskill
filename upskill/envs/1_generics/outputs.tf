@@ -28,3 +28,7 @@ output "alb_subnet_ids" {
   value       = [for x in aws_subnet.alb_public_subnet : x.id]
   description = "List of security groups' ids prepared for alb"
 }
+
+output "instance_profile_name" {
+  value = module.security.instance_profile_name
+}

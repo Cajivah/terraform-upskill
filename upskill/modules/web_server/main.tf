@@ -5,7 +5,7 @@ resource "aws_launch_configuration" "web" {
     var.security_group_id]
   user_data       = data.template_file.user_data.rendered
 
-  //  name_prefix = var.zones[count.index].zone -- commented out because there should be only one config
+  iam_instance_profile = var.instance_profile_name
   lifecycle {
     create_before_destroy = true
   }
