@@ -1,10 +1,10 @@
 #!/bin/bash
 
-my_ip=$(ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
+local_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
 cat > index.html <<EOF
-<h1>EC2 user data</h1>
-<p>MY IP: ${my_ip}</p>
+<h1>EC2 metadata</h1>
+<p>Local IPv4: ${local_ip}</p>
 EOF
 
 nohup busybox httpd -f -p ${server_port} &
