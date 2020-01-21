@@ -9,4 +9,6 @@ locals {
   alb_subnet_cidrs = [for zone in var.zones : zone.alb_subnet_cidr]
 
   public_rt_name = "${var.env}_public_rt"
+  private_rt_name = "${var.env}_private_rt"
+  nat_name = "${var.env}-nat"
 }

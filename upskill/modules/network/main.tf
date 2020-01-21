@@ -6,6 +6,20 @@ resource "aws_internet_gateway" "ig" {
   }
 }
 
+resource "aws_eip" "nat" {
+  vpc = true
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.alb_public_subnet[0].id
+  depends_on    = [
+    "aws_internet_gateway.ig"]
+  tags          = {
+    Name = local.nat_name
+  }
+}
+
 resource "aws_subnet" "alb_public_subnet" {
   count             = length(var.zones)
   cidr_block        = var.zones[count.index].alb_subnet_cidr
@@ -49,16 +63,23 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_eip" "nat" {
-  vpc = true
-
-}
-
-resource "aws_nat_gateway" "gw" {
-  allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.alb_public_subnet[0].id
+resource "aws_route_table" "private" {
+  vpc_id = var.vpc_id
 
   tags = {
-    Name = "gw NAT"
+    Name = local.private_rt_name
   }
 }
+
+resource "aws_route" "to_nat_gateway" {
+  route_table_id         = aws_route_table.private.id
+  destination_cidr_block = local.any_ip
+  nat_gateway_id         = aws_nat_gateway.nat.id
+}
+
+resource "aws_route_table_association" "private" {
+  count          = length(aws_subnet.web_server_private_subnet)
+  subnet_id      = aws_subnet.web_server_private_subnet[count.index].id
+  route_table_id = aws_route_table.private.id
+}
+

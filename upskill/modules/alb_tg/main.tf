@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "lb-http-tg" {
 }
 
 resource "aws_lb_listener_rule" "lb-listener-https-rule" {
-  listener_arn = var.lb-listener-https-arn
+  listener_arn = var.https_listener_arn
 
   action {
     type             = "forward"
