@@ -1,31 +1,31 @@
 output "web_sg_id" {
-  value       = aws_security_group.web_sg.id
+  value       = module.security.web_sg_id
   description = "The id of the security group for web servers"
 }
 
 output "web_subnet_ids" {
-  value       = [for x in aws_subnet.web_server_private_subnet : x.id]
+  value       = module.network.web_subnets_ids
   description = "List of security groups' ids prepared for databases"
 }
 
 
 output "db_sg_ids" {
-  value       = [for x in aws_security_group.db_sg : x.id]
+  value       = module.security.db_sg_ids
   description = "List of security groups' ids prepared for databases"
 }
 
 output "db_subnet_ids" {
-  value       = [for x in aws_subnet.db_private_subnet : x.id]
+  value       = module.network.db_subnets_ids
   description = "List of security groups' ids prepared for databases"
 }
 
 output "alb_sg_ids" {
-  value       = [for x in aws_security_group.alb_sg : x.id]
+  value       = module.security.alb_sg_ids
   description = "List of security groups' ids prepared for alb"
 }
 
 output "alb_subnet_ids" {
-  value       = [for x in aws_subnet.alb_public_subnet : x.id]
+  value       = module.network.alb_subnets_ids
   description = "List of security groups' ids prepared for alb"
 }
 

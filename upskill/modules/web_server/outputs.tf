@@ -5,6 +5,6 @@ output "ec2_address" {
 
 output "asg_tg_ids" {
   value       = [for x in aws_lb_target_group.web_asg_tg : x.id]
-  desctiption = "Identifiers of target groups"
+  description = "Identifiers of target groups"
 }
 

@@ -1,6 +1,6 @@
 resource "aws_iam_role" "instance_role" {
   name = local.role_name
-  assume_role_policy = data.template_file.instance-role
+  assume_role_policy = local.instance-role
 }
 
 resource "aws_iam_role_policy" "instance_role_policy" {

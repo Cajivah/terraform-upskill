@@ -3,7 +3,7 @@ module "vpc" {
   vpc_cidr = var.vpc_cidr
 }
 
-module subnet {
+module network {
   source                  = "../../modules/network"
   vpc_id                  = module.vpc.vpc_id
   zones                   = var.zones
@@ -15,6 +15,8 @@ module "security" {
   source = "../../modules/security"
   vpc_id = module.vpc.vpc_id
   zones  = var.zones
+  env    = var.env
+  name   = "security"
 }
 
 

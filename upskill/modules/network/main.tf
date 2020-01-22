@@ -14,7 +14,7 @@ resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.alb_public_subnet[0].id
   depends_on    = [
-    "aws_internet_gateway.ig"]
+    aws_internet_gateway.ig]
   tags          = {
     Name = local.nat_name
   }
