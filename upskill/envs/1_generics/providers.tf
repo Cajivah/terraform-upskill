@@ -7,7 +7,7 @@ terraform {
   backend "s3" {
     bucket  = "terraform-upskill"
     key     = "envs/generics/terraform.tfstate"
-    region  = "eu-west-1"
+    region  = "eu-north-1"
     # dynamodb_table = "" # charges may apply, necessary for locking
     encrypt = true
   }

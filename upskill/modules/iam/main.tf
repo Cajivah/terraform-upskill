@@ -14,3 +14,9 @@ resource "aws_iam_instance_profile" "instance_profile" {
   path = "/"
   role = aws_iam_role.instance_role.name
 }
+
+// predefined policy
+//resource "aws_iam_policy_attachment" "" {
+//  name       = ""
+//  policy_arn = ""
+//}
