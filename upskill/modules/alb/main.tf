@@ -3,6 +3,7 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   subnets            = var.subnet_ids
   security_groups    = var.sg_ids
+  tags               = var.tags
 }
 
 resource "aws_lb_target_group" "default-tg" {
@@ -10,12 +11,14 @@ resource "aws_lb_target_group" "default-tg" {
   port     = local.https_port
   protocol = local.https_protocol
   vpc_id   = var.vpc_id
+  tags     = var.tags
 }
 
 resource "aws_lb_listener" "redirect_http_to_https" {
   load_balancer_arn = aws_lb.alb.arn
   port              = local.http_port
   protocol          = local.http_protocol
+  tags              = var.tags
 
   default_action {
     type = "redirect"
@@ -43,4 +46,5 @@ resource "aws_lb_listener" "lb-listener-https" {
   protocol          = local.https_protocol
   certificate_arn   = var.ssl_cert_arn
   ssl_policy        = local.tls_1_2
+  tags              = var.tags
 }

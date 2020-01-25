@@ -3,8 +3,8 @@ output "web_sg_id" {
   description = "The id of the security group for web servers"
 }
 
-output "web_subnet_ids" {
-  value       = module.network.web_subnets_ids
+output "private_subnet_ids" {
+  value       = module.network.private_subnet_ids
   description = "List of security groups' ids prepared for databases"
 }
 
@@ -24,8 +24,8 @@ output "alb_sg_ids" {
   description = "List of security groups' ids prepared for alb"
 }
 
-output "alb_subnet_ids" {
-  value       = module.network.alb_subnets_ids
+output "public_subnet_ids" {
+  value       = module.network.public_subnet_ids
   description = "List of security groups' ids prepared for alb"
 }
 

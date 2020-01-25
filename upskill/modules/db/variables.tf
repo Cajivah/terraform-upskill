@@ -58,3 +58,13 @@ variable "username" {
   type        = string
   default     = "admin"
 }
+
+variable "env" {
+  description = "Current environment name"
+  type        = string
+}
+
+variable "tags" {
+  description = "Map of tags that will be appended to all resources"
+  type        = map(string)
+}

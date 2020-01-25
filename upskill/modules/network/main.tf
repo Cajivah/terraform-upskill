@@ -12,13 +12,13 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.alb_public_subnet[0].id
+  subnet_id     = aws_subnet.public[0].id
   tags          = {
     Name = local.nat_name
   }
 }
 
-resource "aws_subnet" "alb_public_subnet" {
+resource "aws_subnet" "public" {
   count             = length(var.zones)
   cidr_block        = var.zones[count.index].alb_subnet_cidr
   availability_zone = var.zones[count.index].zone
@@ -27,7 +27,7 @@ resource "aws_subnet" "alb_public_subnet" {
   map_public_ip_on_launch = var.map_public_ip_on_launch
 }
 
-resource "aws_subnet" "web_server_private_subnet" {
+resource "aws_subnet" "private" {
   count             = length(var.zones)
   cidr_block        = var.zones[count.index].web_subnet_cidr
   availability_zone = var.zones[count.index].zone
@@ -56,8 +56,8 @@ resource "aws_route" "to_internet_gateway" {
 }
 
 resource "aws_route_table_association" "public" {
-  count          = length(aws_subnet.alb_public_subnet)
-  subnet_id      = aws_subnet.alb_public_subnet[count.index].id
+  count          = length(aws_subnet.public)
+  subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
 
@@ -76,8 +76,8 @@ resource "aws_route" "to_nat_gateway" {
 }
 
 resource "aws_route_table_association" "private" {
-  count          = length(aws_subnet.web_server_private_subnet)
-  subnet_id      = aws_subnet.web_server_private_subnet[count.index].id
+  count          = length(aws_subnet.private)
+  subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private.id
 }
 

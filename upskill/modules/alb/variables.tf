@@ -42,3 +42,8 @@ variable "ssl_cert_arn" {
   description = "ARN of a certificate to use in alb config"
   type        = string
 }
+
+variable "tags" {
+  description = "Map of tags that will be appended to all resources"
+  type = map(string)
+}

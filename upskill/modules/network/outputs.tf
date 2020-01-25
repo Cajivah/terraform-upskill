@@ -1,9 +1,9 @@
-output "alb_subnets_ids" {
-  value = [for x in aws_subnet.alb_public_subnet : x.id]
+output "public_subnet_ids" {
+  value = [for x in aws_subnet.public: x.id]
 }
 
-output "web_subnets_ids" {
-  value = [for x in aws_subnet.web_server_private_subnet : x.id]
+output "private_subnet_ids" {
+  value = [for x in aws_subnet.private : x.id]
 }
 
 output "db_subnets_ids" {

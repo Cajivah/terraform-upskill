@@ -1,6 +1,5 @@
 resource "aws_db_instance" "db" {
-  count      = length(var.zones)
-  identifier = "${var.zones[count.index].zone}_db"
+  identifier = "${var.env}_db"
 
   engine            = var.engine
   engine_version    = var.engine_version
@@ -11,14 +10,14 @@ resource "aws_db_instance" "db" {
   username = var.username
   password = var.db_password
 
-  vpc_security_group_ids = [
-    var.security_group_ids[count.index]]
-  db_subnet_group_name   = aws_db_subnet_group.db_subnet.id
+  vpc_security_group_ids = var.security_group_ids
+  db_subnet_group_name   = aws_db_subnet_group.db_subnet.name
+
+  tags = var.tags
 }
 
 resource "aws_db_subnet_group" "db_subnet" {
-  count      = length(var.zones)
-  name       = "${var.zones[count.index].zone}_db_subnet"
-  subnet_ids = [
-    var.subnet_ids[count.index]]
+  name       = "${var.env}_db_subnet_group"
+  subnet_ids = var.subnet_ids
+  tags       = var.tags
 }

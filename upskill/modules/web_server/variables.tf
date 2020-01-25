@@ -66,3 +66,13 @@ variable "env" {
   description = "Current environment"
   type        = string
 }
+
+variable "service_name" {
+  description = "Service name"
+  type        = string
+}
+
+variable "tags" {
+  description = "Current environment"
+  type        = map(string)
+}

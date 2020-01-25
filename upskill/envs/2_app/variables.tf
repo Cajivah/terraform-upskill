@@ -3,13 +3,13 @@ variable "region" {
   type    = string
 }
 
-variable "network_state_bucket" {
-  description = "Bucket name where network state is stored"
+variable "generics_state_bucket" {
+  description = "Bucket name where generics state is stored"
   type        = string
 }
 
-variable "network_state_key" {
-  description = "Key within the bucket where network state is stored"
+variable "generics_state_key" {
+  description = "Key within the bucket where generics state is stored"
   type        = string
 }
 
@@ -46,4 +46,9 @@ variable "env" {
 variable "ssl_cert_arn" {
   description = "ARN of a certificate to use in alb config"
   type        = string
+}
+
+variable "tags" {
+  description = "Map of tags that will be appended to all resources"
+  type = map(string)
 }

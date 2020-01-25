@@ -3,7 +3,7 @@ resource "aws_lb_target_group" "lb-http-tg" {
   port     = local.http_port
   protocol = local.http_protocol
   vpc_id   = var.vpc_id
-
+  tags     = var.tags
   health_check {
     protocol            = local.http_protocol
     path                = var.health_check_path
