@@ -14,14 +14,3 @@ resource "aws_lb_target_group" "lb_http_tg" {
     matcher             = "200"
   }
 }
-
-resource "aws_lb_listener_rule" "lb-listener-https-rule" {
-  listener_arn = var.https_listener_arn
-
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.lb_http_tg.arn
-  }
-
-  condition {}
-}

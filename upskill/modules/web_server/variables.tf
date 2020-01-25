@@ -27,7 +27,7 @@ variable "instance_type" {
 variable "web_ami" {
   description = "AMI identifier of the image to be run on EC2"
   type        = string
-  default     = "ami-0c55b159cbfafe1f0"
+  default     = "ami-0662eb9b9b8685935"
 }
 
 variable "server_port" {
