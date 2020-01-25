@@ -18,11 +18,6 @@ variable "sg_ids" {
   type        = list(string)
 }
 
-variable "asg_target_group_ids" {
-  description = "IDs of target groups containing scallable EC2"
-  type        = list(string)
-}
-
 variable "name" {
   description = "Load balancer's name"
   type        = string

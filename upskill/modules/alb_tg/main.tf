@@ -1,4 +1,4 @@
-resource "aws_lb_target_group" "lb-http-tg" {
+resource "aws_lb_target_group" "lb_http_tg" {
   name     = local.name
   port     = local.http_port
   protocol = local.http_protocol
@@ -20,7 +20,7 @@ resource "aws_lb_listener_rule" "lb-listener-https-rule" {
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.lb-http-tg.arn
+    target_group_arn = aws_lb_target_group.lb_http_tg.arn
   }
 
   condition {}

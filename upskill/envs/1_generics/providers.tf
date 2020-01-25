@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket  = "terraform-upskill"
+    bucket  = "jmalyjasiak-upskill"
     key     = "envs/generics/terraform.tfstate"
     region  = "eu-north-1"
     # dynamodb_table = "" # charges may apply, necessary for locking
@@ -13,12 +13,3 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "terraform-upskill" {
-  bucket = "terraform-upskill"
-  acl    = "private"
-
-  tags = {
-    Name        = "terraform-upskill"
-    Environment = var.env
-  }
-}

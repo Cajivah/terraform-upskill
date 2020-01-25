@@ -1,5 +1,5 @@
 resource "aws_db_instance" "db" {
-  identifier = "${var.env}_db"
+  identifier = "${var.env}-db"
 
   engine            = var.engine
   engine_version    = var.engine_version

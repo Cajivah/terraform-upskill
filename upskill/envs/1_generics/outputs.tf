@@ -32,3 +32,7 @@ output "public_subnet_ids" {
 output "instance_profile_name" {
   value = module.security.instance_profile_name
 }
+
+output "vpc_id" {
+  value = module.vpc.vpc_id
+}

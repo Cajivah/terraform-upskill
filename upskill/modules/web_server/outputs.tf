@@ -3,8 +3,8 @@ output "ec2_address" {
   description = "Ids of autoscaling groups"
 }
 
-output "asg_tg_ids" {
-  value       = [for x in aws_lb_target_group.web_asg_tg : x.id]
+output "asg_tg_id" {
+  value       = module.alb-tg.alb-tg-arn
   description = "Identifiers of target groups"
 }
 

@@ -18,7 +18,6 @@ resource "aws_lb_listener" "redirect_http_to_https" {
   load_balancer_arn = aws_lb.alb.arn
   port              = local.http_port
   protocol          = local.http_protocol
-  tags              = var.tags
 
   default_action {
     type = "redirect"
@@ -33,7 +32,7 @@ resource "aws_lb_listener" "redirect_http_to_https" {
 
 resource "aws_lb_listener" "lb-listener-https" {
   depends_on = [
-    "aws_lb_target_group.default-tg"
+    aws_lb_target_group.default-tg
   ]
 
   default_action {
@@ -46,5 +45,4 @@ resource "aws_lb_listener" "lb-listener-https" {
   protocol          = local.https_protocol
   certificate_arn   = var.ssl_cert_arn
   ssl_policy        = local.tls_1_2
-  tags              = var.tags
 }

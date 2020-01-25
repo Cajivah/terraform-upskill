@@ -1,5 +1,5 @@
 locals {
-  name = "${var.name}-${var.env}-https"
+  name = "${var.name}-${var.env}-http"
 
   https_port     = 443
   http_port      = 80

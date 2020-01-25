@@ -6,11 +6,13 @@ variable "region" {
 variable "generics_state_bucket" {
   description = "Bucket name where generics state is stored"
   type        = string
+  default     = "jmalyjasiak-upskill"
 }
 
 variable "generics_state_key" {
   description = "Key within the bucket where generics state is stored"
   type        = string
+  default     = "envs/generics/terraform.tfstate"
 }
 
 variable "zones" {
@@ -50,5 +52,5 @@ variable "ssl_cert_arn" {
 
 variable "tags" {
   description = "Map of tags that will be appended to all resources"
-  type = map(string)
+  type        = map(string)
 }
