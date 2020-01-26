@@ -23,6 +23,8 @@ module "web_server" {
   env                = var.env
   service_name       = local.service_name
   tags               = var.tags
+
+  app_name = "app"
 }
 
 module "db" {
@@ -37,13 +39,13 @@ module "db" {
 }
 
 module "alb" {
-  source              = "../../modules/alb"
-  zones               = var.zones
-  subnet_ids          = local.generics_public_subnet_ids
-  sg_ids              = local.generics_alb_sg_ids
-  env                 = var.env
-  name                = "main"
-  vpc_id              = local.generics_vpc_id
-  ssl_cert_arn        = var.ssl_cert_arn
-  tags                = var.tags
+  source       = "../../modules/alb"
+  zones        = var.zones
+  subnet_ids   = local.generics_public_subnet_ids
+  sg_ids       = local.generics_alb_sg_ids
+  env          = var.env
+  name         = "main"
+  vpc_id       = local.generics_vpc_id
+  ssl_cert_arn = var.ssl_cert_arn
+  tags         = var.tags
 }

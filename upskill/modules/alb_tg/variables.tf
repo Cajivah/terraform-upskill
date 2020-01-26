@@ -3,6 +3,11 @@ variable "name" {
   type        = string
 }
 
+variable "app_name" {
+  description = "App name expected as a first path segment"
+  type        = string
+}
+
 variable "env" {
   description = "Current environment"
   type        = string
@@ -25,5 +30,5 @@ variable "health_check_path" {
 
 variable "tags" {
   description = "Map of tags that will be appended to all resources"
-  type = map(string)
+  type        = map(string)
 }

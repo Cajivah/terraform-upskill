@@ -33,7 +33,7 @@ variable "web_ami" {
 variable "server_port" {
   description = "Port number for the web app to listen on"
   type        = number
-  default     = 8080
+  default     = 80
 }
 
 variable "vpc_id" {
@@ -64,6 +64,11 @@ variable "instance_profile_name" {
 
 variable "env" {
   description = "Current environment"
+  type        = string
+}
+
+variable "app_name" {
+  description = "Application's name"
   type        = string
 }
 

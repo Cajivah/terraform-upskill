@@ -23,5 +23,9 @@ resource "aws_lb_listener_rule" "forward_to_tg" {
     target_group_arn = aws_lb_target_group.lb_http_tg.arn
   }
 
-  condition {}
+  condition {
+    field  = "path-pattern"
+    values = [
+      "/${var.app_name}*"]
+  }
 }

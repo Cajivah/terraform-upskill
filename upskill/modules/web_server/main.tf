@@ -50,4 +50,5 @@ module "alb-tg" {
   name               = local.cluster_name
   vpc_id             = var.vpc_id
   tags               = var.tags
+  app_name           = var.app_name
 }
