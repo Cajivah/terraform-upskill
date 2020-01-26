@@ -12,7 +12,7 @@ variable "db_name" {
 variable "instance_type" {
   description = "The type of the instance that db engine runs on"
   type        = string
-  default     = "db.t2"
+  default     = "db.t3.micro"
 }
 
 variable "zones" {
