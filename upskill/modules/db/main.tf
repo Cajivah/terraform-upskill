@@ -12,7 +12,7 @@ resource "aws_db_instance" "db" {
 
   vpc_security_group_ids = var.security_group_ids
   db_subnet_group_name   = aws_db_subnet_group.db_subnet.name
-
+  final_snapshot_identifier = "${var.env}-${var.db_name}"
   tags = var.tags
 }
 
