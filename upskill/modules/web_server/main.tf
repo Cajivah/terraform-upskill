@@ -14,14 +14,20 @@ resource "aws_launch_configuration" "web" {
 }
 
 resource "aws_autoscaling_group" "web_asg" {
-  launch_configuration = aws_launch_configuration.web.name
-  vpc_zone_identifier  = var.subnet_ids
-  target_group_arns    = [
+  launch_configuration  = aws_launch_configuration.web.name
+  vpc_zone_identifier   = var.subnet_ids
+  target_group_arns     = [
     module.alb-tg.alb-tg-arn]
-  health_check_type    = "ELB"
-  name                 = local.web_asg_name
-  min_size             = var.min_size
-  max_size             = var.max_size
+  health_check_type     = "ELB"
+  name                  = local.web_asg_name
+  min_size              = var.min_size
+  max_size              = var.max_size
+  min_elb_capacity      = var.min_size
+  wait_for_elb_capacity = var.min_size
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   tag {
     key                 = "Name"
@@ -45,7 +51,7 @@ resource "aws_autoscaling_group" "web_asg" {
 module "alb-tg" {
   source             = "../alb_tg"
   env                = var.env
-  health_check_path  = "/${var.app_name}"
+  health_check_path  = "/"
   https_listener_arn = var.https_listener_arn
   name               = local.cluster_name
   vpc_id             = var.vpc_id
