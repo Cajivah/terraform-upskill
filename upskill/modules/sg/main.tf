@@ -15,7 +15,7 @@ resource "aws_security_group" "db_sg" {
   vpc_id = var.vpc_id
 }
 
-resource "aws_security_group_rule" "allow_http_inbound" {
+resource "aws_security_group_rule" "alb_all_http_inbound" {
   count             = length(aws_security_group.alb_sg)
   type              = "ingress"
   security_group_id = aws_security_group.alb_sg[count.index].id
@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "allow_http_inbound" {
   cidr_blocks = var.allowed_external_ips
 }
 
-resource "aws_security_group_rule" "allow_https_inbound" {
+resource "aws_security_group_rule" "alb_all_https_inbound" {
   count             = length(aws_security_group.alb_sg)
   type              = "ingress"
   security_group_id = aws_security_group.alb_sg[count.index].id
@@ -37,18 +37,7 @@ resource "aws_security_group_rule" "allow_https_inbound" {
   cidr_blocks = var.allowed_external_ips
 }
 
-resource "aws_security_group_rule" "allow_all_outbound" {
-  count             = length(aws_security_group.alb_sg)
-  type              = "egress"
-  security_group_id = aws_security_group.alb_sg[count.index].id
-
-  from_port   = local.any_port
-  to_port     = local.any_port
-  protocol    = local.any_protocol
-  cidr_blocks = local.all_ips
-}
-
-resource "aws_security_group_rule" "allow-alb-http-inbound" {
+resource "aws_security_group_rule" "web_allow_inbound_from_alb" {
   type              = "ingress"
   security_group_id = aws_security_group.web_sg.id
 
@@ -58,7 +47,7 @@ resource "aws_security_group_rule" "allow-alb-http-inbound" {
   cidr_blocks = local.alb_subnet_cidrs
 }
 
-resource "aws_security_group_rule" "allow-any-outbound-to-alb" {
+resource "aws_security_group_rule" "web_allow_all_outbound" {
   type              = "egress"
   security_group_id = aws_security_group.web_sg.id
 
@@ -68,7 +57,7 @@ resource "aws_security_group_rule" "allow-any-outbound-to-alb" {
   cidr_blocks = local.all_ips
 }
 
-resource "aws_security_group_rule" "allow-web-inbound" {
+resource "aws_security_group_rule" "db_allow_web_inbound" {
   count             = length(aws_security_group.db_sg)
   type              = "ingress"
   security_group_id = aws_security_group.db_sg[count.index].id
