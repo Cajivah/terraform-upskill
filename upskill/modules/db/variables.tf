@@ -1,8 +1,18 @@
 variable "db_name" {
   description = "The name to use for the database"
   type        = string
-  default     = "example_database_stage"
 }
+
+variable "db_username_key" {
+  description = "Root username key to fetch value from parameter store"
+  type        = string
+}
+
+variable "db_password_key" {
+  description = "Root user password key to fetch value from parameter store"
+  type        = string
+}
+
 
 variable "instance_type" {
   description = "The type of the instance that db engine runs on"

@@ -1,7 +1,7 @@
 data "aws_ssm_parameter" "db_username" {
-  name = "${var.env}_${var.owner}_${var.identifier}_${var.db_name}_username"
+  name = var.db_username_key
 }
 
 data "aws_ssm_parameter" "db_password" {
-  name = "${var.env}_${var.owner}_${var.identifier}_${var.db_name}_password"
+  name = var.db_password_key
 }

@@ -16,6 +16,9 @@ module "web_server" {
   vpc_id                = local.generics_vpc_id
   instance_profile_name = local.generics_instance_profile_name
 
+  db_address = local.db_address
+  db_port    = local.db_port
+
   max_size = var.max_web_scaling
   min_size = var.min_web_scaling
 
@@ -23,18 +26,6 @@ module "web_server" {
   env                = var.env
   tags               = var.tags
   app_name           = local.app_name
-  owner              = var.owner
-}
-
-module "db" {
-  source             = "../../modules/db"
-  db_name            = "db"
-  zones              = var.zones
-  subnet_ids         = local.generics_db_subnet_ids
-  security_group_ids = local.generics_db_sg_ids
-  tags               = var.tags
-  env                = var.env
-  identifier         = local.app_name
   owner              = var.owner
 }
 

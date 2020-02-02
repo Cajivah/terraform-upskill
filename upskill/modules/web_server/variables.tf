@@ -8,6 +8,16 @@ variable "zones" {
   }))
 }
 
+variable "db_address" {
+  description = "Database address"
+  type        = string
+}
+
+variable "db_port" {
+  description = "Database port"
+  type        = string
+}
+
 variable "min_size" {
   description = "The minimal number of intances to keep alive"
   type        = number

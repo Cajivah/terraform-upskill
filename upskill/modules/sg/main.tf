@@ -37,6 +37,17 @@ resource "aws_security_group_rule" "alb_all_https_inbound" {
   cidr_blocks = var.allowed_external_ips
 }
 
+resource "aws_security_group_rule" "alb_allow_outbound_to_web" {
+  count             = length(aws_security_group.alb_sg)
+  type              = "egress"
+  security_group_id = aws_security_group.alb_sg[count.index].id
+
+  from_port   = local.any_port
+  to_port     = local.any_port
+  protocol    = local.any_protocol
+  cidr_blocks = local.web_subnet_cidrs
+}
+
 resource "aws_security_group_rule" "web_allow_inbound_from_alb" {
   type              = "ingress"
   security_group_id = aws_security_group.web_sg.id

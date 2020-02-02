@@ -25,21 +25,6 @@ variable "zones" {
   }))
 }
 
-variable "min_web_scaling" {
-  description = "The minimal number of intances to keep alive"
-  type        = number
-}
-
-variable "max_web_scaling" {
-  description = "The maximal number of intances to keep alive"
-  type        = number
-}
-
-variable "domain_name" {
-  description = "Domain name for the environment. SHOULD BE MATCHING ALREADY EXISTING DOMAIN!"
-  type        = string
-}
-
 variable "env" {
   description = "Environment name"
   type        = string
@@ -47,11 +32,6 @@ variable "env" {
 
 variable "owner" {
   description = "Owner's name to be prepended to resources names"
-  type        = string
-}
-
-variable "ssl_cert_arn" {
-  description = "ARN of a certificate to use in alb config"
   type        = string
 }
 
