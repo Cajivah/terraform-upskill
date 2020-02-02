@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "lb_http_tg" {
-  name     = local.name
+  name     = local.http_tg_name
   port     = local.http_port
   protocol = local.http_protocol
   vpc_id   = var.vpc_id

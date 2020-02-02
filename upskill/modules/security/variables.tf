@@ -23,9 +23,15 @@ variable "allowed_external_ips" {
 variable "name" {
   description = "Service name making a part of full resource name"
   type        = string
+  default     = "security"
 }
 
 variable "env" {
   description = "Current environment name"
+  type        = string
+}
+
+variable "owner" {
+  description = "Owner name to be added to each resource name"
   type        = string
 }

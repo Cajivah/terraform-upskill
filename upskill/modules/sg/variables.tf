@@ -19,3 +19,19 @@ variable "allowed_external_ips" {
   default     = [
     "0.0.0.0/0"]
 }
+
+variable "env" {
+  type        = string
+  description = "Current environment name"
+}
+
+variable "owner" {
+  type        = string
+  description = "Resource owner name to be prepended to resources names"
+}
+
+variable "name" {
+  type        = string
+  description = "Name of the infrastructure to be added to resources names"
+  default     = "sg"
+}

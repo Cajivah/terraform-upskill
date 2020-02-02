@@ -3,6 +3,11 @@ variable "name" {
   type        = string
 }
 
+variable "owner" {
+  description = "Owner's name to be added to resources names"
+  type        = string
+}
+
 variable "app_name" {
   description = "App name expected as a first path segment"
   type        = string

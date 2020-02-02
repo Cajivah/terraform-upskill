@@ -31,7 +31,7 @@ resource "aws_autoscaling_group" "web_asg" {
 
   tag {
     key                 = "Name"
-    value               = local.cluster_name
+    value               = local.web_lc_name_prefix
     propagate_at_launch = true
   }
 
@@ -53,8 +53,9 @@ module "alb-tg" {
   env                = var.env
   health_check_path  = "/"
   https_listener_arn = var.https_listener_arn
-  name               = local.cluster_name
+  name               = var.app_name
   vpc_id             = var.vpc_id
   tags               = var.tags
   app_name           = var.app_name
+  owner              = var.owner
 }

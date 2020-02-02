@@ -14,6 +14,12 @@ variable "env" {
   type        = string
 }
 
+
+variable "owner" {
+  description = "Owner's name to be prepended to resources names"
+  type        = string
+}
+
 variable "zones" {
   description = "Configuration of network set up per AZ"
   type        = list(object({

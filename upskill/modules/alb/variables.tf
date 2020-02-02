@@ -28,6 +28,11 @@ variable "env" {
   type        = string
 }
 
+variable "owner" {
+  description = "Owner's name to be added to resources names"
+  type        = string
+}
+
 variable "vpc_id" {
   description = "VPC identifier"
   type        = string
@@ -40,5 +45,5 @@ variable "ssl_cert_arn" {
 
 variable "tags" {
   description = "Map of tags that will be appended to all resources"
-  type = map(string)
+  type        = map(string)
 }

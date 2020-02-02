@@ -21,10 +21,9 @@ module "web_server" {
 
   https_listener_arn = module.alb.https_listener_arn
   env                = var.env
-  service_name       = local.service_name
   tags               = var.tags
-
-  app_name = "app"
+  app_name           = local.app_name
+  owner              = var.owner
 }
 
 module "db" {
@@ -36,6 +35,8 @@ module "db" {
   security_group_ids = local.generics_db_sg_ids
   tags               = var.tags
   env                = var.env
+  identifier         = local.app_name
+  owner              = var.owner
 }
 
 module "alb" {
@@ -44,8 +45,9 @@ module "alb" {
   subnet_ids   = local.generics_public_subnet_ids
   sg_ids       = local.generics_alb_sg_ids
   env          = var.env
-  name         = "main"
+  name         = local.app_name
   vpc_id       = local.generics_vpc_id
   ssl_cert_arn = var.ssl_cert_arn
   tags         = var.tags
+  owner        = var.owner
 }

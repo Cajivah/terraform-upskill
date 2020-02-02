@@ -1,12 +1,12 @@
 resource "aws_iam_role" "instance_role" {
-  name = local.role_name
+  name               = local.role_name
   assume_role_policy = local.instance-role
 }
 
 resource "aws_iam_role_policy" "instance_role_policy" {
-  name = local.role_policy_name
+  name   = local.role_policy_name
   policy = data.template_file.instance-role-policy.rendered
-  role = aws_iam_role.instance_role.id
+  role   = aws_iam_role.instance_role.id
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {
@@ -14,9 +14,3 @@ resource "aws_iam_instance_profile" "instance_profile" {
   path = "/"
   role = aws_iam_role.instance_role.name
 }
-
-// predefined policy
-//resource "aws_iam_policy_attachment" "" {
-//  name       = ""
-//  policy_arn = ""
-//}

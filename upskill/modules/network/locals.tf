@@ -8,7 +8,9 @@ locals {
   any_ip           = "0.0.0.0/0"
   alb_subnet_cidrs = [for zone in var.zones : zone.alb_subnet_cidr]
 
-  public_rt_name = "${var.env}_public_rt"
-  private_rt_name = "${var.env}_private_rt"
-  nat_name = "${var.env}-nat"
+  domain_prefix   = "${var.owner}_${var.name}_${var.env}"
+  public_rt_name  = "${local.domain_prefix}_public_rt"
+  private_rt_name = "${local.domain_prefix}_private_rt"
+  nat_name        = "${local.domain_prefix}_nat"
+  ig_name         = "${local.domain_prefix}_ig"
 }

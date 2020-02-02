@@ -45,6 +45,11 @@ variable "env" {
   type        = string
 }
 
+variable "owner" {
+  description = "Owner's name to be prepended to resources names"
+  type        = string
+}
+
 variable "ssl_cert_arn" {
   description = "ARN of a certificate to use in alb config"
   type        = string

@@ -1,5 +1,5 @@
 resource "aws_db_instance" "db" {
-  identifier = "${var.env}-db"
+  identifier = "${local.domain_prefix}_db"
 
   engine            = var.engine
   engine_version    = var.engine_version
@@ -10,14 +10,14 @@ resource "aws_db_instance" "db" {
   username = var.username
   password = var.db_password
 
-  vpc_security_group_ids = var.security_group_ids
-  db_subnet_group_name   = aws_db_subnet_group.db_subnet.name
+  vpc_security_group_ids    = var.security_group_ids
+  db_subnet_group_name      = aws_db_subnet_group.db_subnet.name
   final_snapshot_identifier = "${var.env}-${var.db_name}"
-  tags = var.tags
+  tags                      = var.tags
 }
 
 resource "aws_db_subnet_group" "db_subnet" {
-  name       = "${var.env}_db_subnet_group"
+  name       = "${local.domain_prefix}_db_subnet_group"
   subnet_ids = var.subnet_ids
   tags       = var.tags
 }

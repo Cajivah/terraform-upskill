@@ -13,19 +13,23 @@ variable "zones" {
   }))
 }
 
-variable "ig_name" {
-  type        = string
-  description = "Name added as a tag to internet gateway resource"
-  default     = "ig"
-}
-
 variable "env" {
   type        = string
   description = "Current environment name"
 }
 
-
 variable "map_public_ip_on_launch" {
   type        = string
   description = "TODO"
+}
+
+variable "owner" {
+  type        = string
+  description = "Resource owner name to be prepended to resources names"
+}
+
+variable "name" {
+  type        = string
+  description = "Name of the infrastructure to be added to resources names"
+  default     = "network"
 }

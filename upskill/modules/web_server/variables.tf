@@ -72,12 +72,12 @@ variable "app_name" {
   type        = string
 }
 
-variable "service_name" {
-  description = "Service name"
-  type        = string
-}
-
 variable "tags" {
   description = "Current environment"
   type        = map(string)
+}
+
+variable "owner" {
+  type        = string
+  description = "Resource owner name to be prepended to resources names"
 }

@@ -64,6 +64,16 @@ variable "env" {
   type        = string
 }
 
+variable "identifier" {
+  description = "Identifier to be added to resources names"
+  type        = string
+}
+
+variable "owner" {
+  description = "Owner's name to be added to resources names"
+  type        = string
+}
+
 variable "tags" {
   description = "Map of tags that will be appended to all resources"
   type        = map(string)
