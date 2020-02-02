@@ -28,8 +28,7 @@ module "web_server" {
 
 module "db" {
   source             = "../../modules/db"
-  db_password        = "Administrator(90)"
-  db_name            = "test"
+  db_name            = "db"
   zones              = var.zones
   subnet_ids         = local.generics_db_subnet_ids
   security_group_ids = local.generics_db_sg_ids

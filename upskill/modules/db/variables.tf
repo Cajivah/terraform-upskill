@@ -1,8 +1,3 @@
-variable "db_password" {
-  description = "The password for the database"
-  type        = string
-}
-
 variable "db_name" {
   description = "The name to use for the database"
   type        = string
@@ -51,12 +46,6 @@ variable "allocated_storage" {
   description = "TODO"
   type        = number
   default     = 10
-}
-
-variable "username" {
-  description = "Root db user name"
-  type        = string
-  default     = "admin"
 }
 
 variable "env" {
