@@ -48,6 +48,20 @@
       "Effect": "Allow",
       "Action": "s3:ListAllMyBuckets",
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:DescribeParameters"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters"
+      ],
+      "Resource": "arn:aws:ssm:us-east-2:123456789012:parameter/${env}_*"
     }
   ]
 }

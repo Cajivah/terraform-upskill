@@ -1,11 +1,11 @@
 resource "aws_db_instance" "db" {
   identifier = "${local.domain_prefix}_db"
 
-  engine            = var.engine
-  engine_version    = var.engine_version
-  allocated_storage = var.allocated_storage
-  instance_class    = var.instance_type
-  skip_final_snapshot    = true
+  engine              = var.engine
+  engine_version      = var.engine_version
+  allocated_storage   = var.allocated_storage
+  instance_class      = var.instance_type
+  skip_final_snapshot = true
 
   name     = var.db_name
   username = data.aws_ssm_parameter.db_username
