@@ -1,6 +1,6 @@
 data "template_file" "instance-role-policy" {
   template = file("${path.module}/policies/instance-role-policy.json")
-  vars {
+  vars = {
     env = var.env
   }
 }

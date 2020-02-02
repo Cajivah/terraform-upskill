@@ -61,7 +61,7 @@
       "Action": [
         "ssm:GetParameters"
       ],
-      "Resource": "arn:aws:ssm:us-east-2:123456789012:parameter/${env}_*"
+      "Resource": "arn:aws:ssm:us-east-2:123456789012:parameter/${env}-*"
     }
   ]
 }

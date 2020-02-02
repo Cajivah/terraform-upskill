@@ -8,5 +8,5 @@ locals {
   all_ips          = [
     "0.0.0.0/0"]
   alb_subnet_cidrs = [for zone in var.zones : zone.alb_subnet_cidr]
-  domain_prefix    = "${var.owner}_${var.name}_${var.env}"
+  domain_prefix    = "${var.owner}-${var.name}-${var.env}"
 }

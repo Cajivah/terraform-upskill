@@ -8,5 +8,5 @@ locals {
   all_ips            = [
     "0.0.0.0/0"]
   web_asg_name       = "${aws_launch_configuration.web.name}-asg"
-  web_lc_name_prefix = "${var.owner}_${var.app_name}_${var.env}_instance"
+  web_lc_name_prefix = "${var.owner}-${var.app_name}-${var.env}-instance"
 }

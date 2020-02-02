@@ -1,17 +1,17 @@
 resource "aws_security_group" "alb_sg" {
   count  = length(var.zones)
-  name   = "${local.domain_prefix}_${var.zones[count.index].zone}_alb_sg"
+  name   = "${local.domain_prefix}-${var.zones[count.index].zone}-alb-sg"
   vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "web_sg" {
-  name   = "${local.domain_prefix}_web_sg"
+  name   = "${local.domain_prefix}-web-sg"
   vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "db_sg" {
   count  = length(var.zones)
-  name   = "${local.domain_prefix}_${var.owner}_${var.zones[count.index].zone}_db_sg"
+  name   = "${local.domain_prefix}-${var.owner}-${var.zones[count.index].zone}-db-sg"
   vpc_id = var.vpc_id
 }
 
