@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "web_asg" {
 module "alb-tg" {
   source             = "../alb_tg"
   env                = var.env
-  health_check_path  = "/app"
+  health_check_path  = "/"
   https_listener_arn = var.https_listener_arn
   name               = var.app_name
   vpc_id             = var.vpc_id
