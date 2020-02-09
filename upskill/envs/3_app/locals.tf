@@ -6,8 +6,10 @@ locals {
   generics_alb_sg_ids            = data.terraform_remote_state.generics.outputs.alb_sg_ids
   generics_instance_profile_name = data.terraform_remote_state.generics.outputs.instance_profile_name
 
-  db_address = data.terraform_remote_state.db.outputs.address
-  db_port    = data.terraform_remote_state.db.outputs.port
+  db_address      = data.terraform_remote_state.db.outputs.address
+  db_port         = data.terraform_remote_state.db.outputs.port
+  db_username_key = data.terraform_remote_state.db.outputs.web_db_username_key
+  db_password_key = data.terraform_remote_state.db.outputs.web_db_password_key
 
   subdomain = "jmalyjasiak"
   app_name  = "app"

@@ -18,6 +18,16 @@ variable "db_port" {
   type        = string
 }
 
+variable "db_username_key" {
+  description = "Database username to fetch it from ssm"
+  type        = string
+}
+
+variable "db_password_key" {
+  description = "Database password key to fetch it from ssm"
+  type        = string
+}
+
 variable "min_size" {
   description = "The minimal number of intances to keep alive"
   type        = number

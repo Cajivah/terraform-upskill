@@ -17,4 +17,7 @@ ln -d /var/www/html/index.html /var/www/html/app/index.html
 
 chmod 0755 -R /var/www/html
 
+echo "export DB_USERNAME=$(aws get-parameter --name="${username_key}")" >> ~/.bashrc
+echo "export DB_PASSWORD=$(aws get-parameter --name="${password_key}")" >> ~/.bashrc
+
 service httpd start

@@ -18,6 +18,8 @@ module "web_server" {
 
   db_address = local.db_address
   db_port    = local.db_port
+  db_username_key = local.db_username_key
+  db_password_key = local.db_password_key
 
   max_size = var.max_web_scaling
   min_size = var.min_web_scaling
