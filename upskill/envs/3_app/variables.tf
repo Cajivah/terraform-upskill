@@ -3,24 +3,6 @@ variable "region" {
   type    = string
 }
 
-variable "state_bucket" {
-  description = "Bucket name where generics state is stored"
-  type        = string
-  default     = "jmalyjasiak-upskill"
-}
-
-variable "generics_state_key" {
-  description = "Key within the bucket where generics state is stored"
-  type        = string
-  default     = "envs/generics/terraform.tfstate"
-}
-
-variable "db_state_key" {
-  description = "Key within the bucket where db state is stored"
-  type        = string
-  default     = "envs/db/terraform.tfstate"
-}
-
 variable "zones" {
   description = "Configuration of network set up per AZ"
   type        = list(object({
@@ -43,11 +25,6 @@ variable "max_web_scaling" {
 
 variable "domain_name" {
   description = "Domain name for the environment. SHOULD BE MATCHING ALREADY EXISTING DOMAIN!"
-  type        = string
-}
-
-variable "env" {
-  description = "Environment name"
   type        = string
 }
 

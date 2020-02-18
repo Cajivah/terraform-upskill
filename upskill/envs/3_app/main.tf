@@ -4,7 +4,7 @@ module r53 {
   subdomain_name = local.subdomain
   lb_dns_name    = module.alb.alb_dns_name
   lb_zone_id     = module.alb.alb_zone_id
-  env            = var.env
+  env            = terraform.workspace
   tags           = var.tags
 }
 
@@ -25,7 +25,7 @@ module "web_server" {
   min_size = var.min_web_scaling
 
   https_listener_arn = module.alb.https_listener_arn
-  env                = var.env
+  env                = terraform.workspace
   tags               = var.tags
   app_name           = local.app_name
   owner              = var.owner
@@ -36,7 +36,7 @@ module "alb" {
   zones        = var.zones
   subnet_ids   = local.generics_public_subnet_ids
   sg_ids       = local.generics_alb_sg_ids
-  env          = var.env
+  env          = terraform.workspace
   name         = local.app_name
   vpc_id       = local.generics_vpc_id
   ssl_cert_arn = var.ssl_cert_arn

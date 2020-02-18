@@ -9,12 +9,6 @@ variable "region" {
   type        = string
 }
 
-variable "env" {
-  description = "Environment name"
-  type        = string
-}
-
-
 variable "owner" {
   description = "Owner's name to be prepended to resources names"
   type        = string

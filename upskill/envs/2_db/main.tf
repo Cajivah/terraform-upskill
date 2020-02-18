@@ -7,7 +7,7 @@ module "db" {
   subnet_ids         = local.generics_db_subnet_ids
   security_group_ids = local.generics_db_sg_ids
   tags               = var.tags
-  env                = var.env
+  env                = terraform.workspace
   owner              = var.owner
   identifier         = local.app_name
 }

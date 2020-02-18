@@ -3,18 +3,6 @@ variable "region" {
   type    = string
 }
 
-variable "generics_state_bucket" {
-  description = "Bucket name where generics state is stored"
-  type        = string
-  default     = "jmalyjasiak-upskill"
-}
-
-variable "generics_state_key" {
-  description = "Key within the bucket where generics state is stored"
-  type        = string
-  default     = "envs/generics/terraform.tfstate"
-}
-
 variable "zones" {
   description = "Configuration of network set up per AZ"
   type        = list(object({
@@ -23,11 +11,6 @@ variable "zones" {
     web_subnet_cidr = string,
     db_subnet_cidr  = string
   }))
-}
-
-variable "env" {
-  description = "Environment name"
-  type        = string
 }
 
 variable "owner" {

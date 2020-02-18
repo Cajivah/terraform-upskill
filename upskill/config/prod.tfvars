@@ -19,7 +19,6 @@ zones = [
   }
 ]
 
-env    = "prod"
 region = "eu-north-1"
 
 min_web_scaling = 3
