@@ -1,4 +1,4 @@
-resource "aws_lb" "alb" {
+resource "aws_lb" "jmalyjasiak-alb" {
   name               = local.lb_name
   load_balancer_type = "application"
   subnets            = var.subnet_ids
@@ -6,7 +6,7 @@ resource "aws_lb" "alb" {
   tags               = var.tags
 }
 
-resource "aws_lb_target_group" "default-tg" {
+resource "aws_lb_target_group" "jmalyjasiak-default-tg" {
   name     = local.default_tg_name
   port     = local.https_port
   protocol = local.https_protocol
@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "default-tg" {
   tags     = var.tags
 }
 
-resource "aws_lb_listener" "redirect_http_to_https" {
+resource "aws_lb_listener" "jmalyjasiak-redirect_http_to_https" {
   load_balancer_arn = aws_lb.alb.arn
   port              = local.http_port
   protocol          = local.http_protocol
@@ -30,7 +30,7 @@ resource "aws_lb_listener" "redirect_http_to_https" {
   }
 }
 
-resource "aws_lb_listener" "lb-listener-https" {
+resource "aws_lb_listener" "jmalyjasiak-lb-listener-https" {
   depends_on = [
     aws_lb_target_group.default-tg
   ]

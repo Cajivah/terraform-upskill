@@ -1,4 +1,4 @@
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "jmalyjasiak-www" {
   zone_id = data.aws_route53_zone.primary_zone.id
   name    = "${var.env}.${var.domain_name}"
   type    = "A"

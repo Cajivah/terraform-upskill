@@ -1,4 +1,4 @@
-resource "aws_lb_target_group" "lb_http_tg" {
+resource "aws_lb_target_group" "jmalyjasiak-lb_http_tg" {
   name     = local.http_tg_name
   port     = local.http_port
   protocol = local.http_protocol
@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "lb_http_tg" {
   }
 }
 
-resource "aws_lb_listener_rule" "forward_to_tg" {
+resource "aws_lb_listener_rule" "jmalyjasiak-forward_to_tg" {
   listener_arn = var.https_listener_arn
 
   action {

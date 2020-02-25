@@ -1,4 +1,4 @@
-resource "aws_db_instance" "db" {
+resource "aws_db_instance" "jmalyjasiak-db" {
   identifier = "${local.domain_prefix}-db"
 
   engine              = var.engine
@@ -12,11 +12,11 @@ resource "aws_db_instance" "db" {
   password = local.db_password
 
   vpc_security_group_ids = var.security_group_ids
-  db_subnet_group_name   = aws_db_subnet_group.db_subnet.name
+  db_subnet_group_name   = aws_db_subnet_group.jmalyjasiak-db_subnet.name
   tags                   = var.tags
 }
 
-resource "aws_db_subnet_group" "db_subnet" {
+resource "aws_db_subnet_group" "jmalyjasiak-db_subnet" {
   name       = "${local.domain_prefix}-db-subnet-group"
   subnet_ids = var.subnet_ids
   tags       = var.tags
