@@ -16,8 +16,8 @@ module "web_server" {
   vpc_id                = local.generics_vpc_id
   instance_profile_name = local.generics_instance_profile_name
 
-  db_address = local.db_address
-  db_port    = local.db_port
+  db_address      = local.db_address
+  db_port         = local.db_port
   db_username_key = local.db_username_key
   db_password_key = local.db_password_key
 
@@ -29,6 +29,7 @@ module "web_server" {
   tags               = var.tags
   app_name           = local.app_name
   owner              = var.owner
+  region             = var.region
 }
 
 module "alb" {

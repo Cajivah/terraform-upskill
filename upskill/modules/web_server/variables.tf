@@ -101,3 +101,8 @@ variable "owner" {
   type        = string
   description = "Resource owner name to be prepended to resources names"
 }
+
+variable "region" {
+  type        = string
+  description = "Region that environment runs in"
+}
