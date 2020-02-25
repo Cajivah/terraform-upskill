@@ -1,7 +1,6 @@
 variable "vpc_cidr" {
   description = "Main VPC CIDR block"
   type        = string
-  default     = "10.0.0.0/20"
 }
 
 variable "region" {
@@ -31,7 +30,6 @@ variable "allowed_external_ips" {
 }
 
 variable "map_public_ip_on_launch" {
-  description = "TODO"
+  description = "Map public ip on launch"
   type        = bool
-  default     = false
 }

@@ -14,16 +14,17 @@ resource "aws_launch_configuration" "web" {
 }
 
 resource "aws_autoscaling_group" "web_asg" {
-  launch_configuration  = aws_launch_configuration.web.name
-  vpc_zone_identifier   = var.subnet_ids
-  target_group_arns     = [
+  launch_configuration      = aws_launch_configuration.web.name
+  vpc_zone_identifier       = var.subnet_ids
+  target_group_arns         = [
     module.alb-tg.alb-tg-arn]
-  health_check_type     = "ELB"
-  name                  = local.web_asg_name
-  min_size              = var.min_size
-  max_size              = var.max_size
-  min_elb_capacity      = var.min_size
-  wait_for_elb_capacity = var.min_size
+  health_check_type         = "ELB"
+  name                      = local.web_asg_name
+  min_size                  = var.min_size
+  max_size                  = var.max_size
+  min_elb_capacity          = var.min_size
+  wait_for_elb_capacity     = var.min_size
+  health_check_grace_period = 100
 
   lifecycle {
     create_before_destroy = true
