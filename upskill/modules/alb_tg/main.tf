@@ -20,7 +20,7 @@ resource "aws_lb_listener_rule" "jmalyjasiak-forward_to_tg" {
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.lb_http_tg.arn
+    target_group_arn = aws_lb_target_group.jmalyjasiak-lb_http_tg.arn
   }
 
   condition {

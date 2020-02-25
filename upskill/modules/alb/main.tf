@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "jmalyjasiak-default-tg" {
 }
 
 resource "aws_lb_listener" "jmalyjasiak-redirect_http_to_https" {
-  load_balancer_arn = aws_lb.alb.arn
+  load_balancer_arn = aws_lb.jmalyjasiak-alb.arn
   port              = local.http_port
   protocol          = local.http_protocol
 
@@ -32,15 +32,15 @@ resource "aws_lb_listener" "jmalyjasiak-redirect_http_to_https" {
 
 resource "aws_lb_listener" "jmalyjasiak-lb-listener-https" {
   depends_on = [
-    aws_lb_target_group.default-tg
+    aws_lb_target_group.jmalyjasiak-default-tg
   ]
 
   default_action {
-    target_group_arn = aws_lb_target_group.default-tg.arn
+    target_group_arn = aws_lb_target_group.jmalyjasiak-default-tg.arn
     type             = "forward"
   }
 
-  load_balancer_arn = aws_lb.alb.arn
+  load_balancer_arn = aws_lb.jmalyjasiak-alb.arn
   port              = local.https_port
   protocol          = local.https_protocol
   certificate_arn   = var.ssl_cert_arn
