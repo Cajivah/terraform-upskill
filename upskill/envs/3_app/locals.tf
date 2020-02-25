@@ -1,7 +1,7 @@
 locals {
   state_bucket       = "jmalyjasiak-upskill"
-  generics_state_key = "env:/${terraform.workspace}envs/generics/terraform.tfstate"
-  db_state_key       = "env:/${terraform.workspace}envs/db/terraform.tfstate"
+  generics_state_key = "env:/${terraform.workspace}/envs/generics/terraform.tfstate"
+  db_state_key       = "env:/${terraform.workspace}/envs/db/terraform.tfstate"
 
   generics_private_subnet_ids    = data.terraform_remote_state.generics.outputs.private_subnet_ids
   generics_web_sg_id             = data.terraform_remote_state.generics.outputs.web_sg_id
